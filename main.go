@@ -4,8 +4,6 @@ import (
 	"log"
 	"net/http"
 
-	"chi-project/controllers"
-
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
 )
@@ -15,11 +13,7 @@ func main() {
 	r.Use(middleware.Logger)
 
 	r.Group(func(r chi.Router) {
-		r.Get("/", controllers.GetArticle)
-		r.Post("/", controllers.CreateArticle)
-		r.Put("/{id}", controllers.UpdateArticle)
-		r.Put("/{id}", controllers.UpdateArticle)
-		r.Delete("/{id}", controllers.DeleteArticle)
+
 	})
 
 	r.NotFound(func(w http.ResponseWriter, r *http.Request) {
