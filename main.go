@@ -1,9 +1,10 @@
 package main
 
 import (
+	"chi-project/controllers"
 	"log"
 	"net/http"
-	"chi-project/controllers"
+
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
 )
@@ -14,6 +15,7 @@ func main() {
 
 	r.Group(func(r chi.Router) {
 		r.Get("/", controllers.GetArticle)
+		r.Post("/", controllers.CreateArticle)
 	})
 
 	r.NotFound(func(w http.ResponseWriter, r *http.Request) {

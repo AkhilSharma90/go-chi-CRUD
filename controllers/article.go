@@ -36,3 +36,18 @@ func GetArticle(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(response)
 	return
 }
+
+func CreateArticle(w http.ResponseWriter, r *http.Request) {
+	var article interfaces.Article
+	json.NewDecoder(r.Body).Decode(&article)
+	articles = append(articles, article)
+	response := response{
+		StatusCode: 201,
+		Message:    "Success Create Article",
+		Data:       articles,
+	}
+
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusCreated)
+	json.NewEncoder(w).Encode(response)
+}
