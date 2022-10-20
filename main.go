@@ -3,7 +3,7 @@ package main
 import (
 	"log"
 	"net/http"
-
+	"chi-project/controllers"
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
 )
@@ -13,7 +13,7 @@ func main() {
 	r.Use(middleware.Logger)
 
 	r.Group(func(r chi.Router) {
-
+		r.Get("/", controllers.GetArticle)
 	})
 
 	r.NotFound(func(w http.ResponseWriter, r *http.Request) {
