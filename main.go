@@ -17,6 +17,7 @@ func main() {
 		r.Get("/", controllers.GetArticle)
 		r.Post("/", controllers.CreateArticle)
 		r.Put("/{id}", controllers.UpdateArticle)
+		r.Delete("/{id}", controllers.DeleteArticle)
 	})
 
 	r.NotFound(func(w http.ResponseWriter, r *http.Request) {

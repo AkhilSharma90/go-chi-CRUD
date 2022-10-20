@@ -82,3 +82,16 @@ func UpdateArticle(w http.ResponseWriter, r *http.Request) {
 
 	json.NewEncoder(w).Encode(Response)
 }
+func DeleteArticle(w http.ResponseWriter, r *http.Request) {
+	params := chi.URLParam(r, "id")
+
+	response := response{
+		StatusCode: 200,
+		Message:    "Success Delete Article",
+		Data:       params,
+	}
+
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
+	json.NewEncoder(w).Encode(response)
+}
