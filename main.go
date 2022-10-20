@@ -16,6 +16,7 @@ func main() {
 	r.Group(func(r chi.Router) {
 		r.Get("/", controllers.GetArticle)
 		r.Post("/", controllers.CreateArticle)
+		r.Put("/{id}", controllers.UpdateArticle)
 	})
 
 	r.NotFound(func(w http.ResponseWriter, r *http.Request) {
